@@ -1,0 +1,74 @@
+{
+  "name": "vue-component-map",
+  "displayName": "vue-component-map",
+  "description": "The purpose of this extension is to generate a component flow map from vue code",
+  "version": "0.0.1-POC",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/pratheeshrussell/vue-component-map.git"
+	},
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:vue"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vue-component-map.showVueMap",
+        "title": "Show Vue Component Map"
+      }
+    ],
+    "languages": [
+      {
+        "id": "vue",
+        "extensions": [
+          ".vue"
+        ],
+        "aliases": [
+          "Vue"
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "webview": {
+    "partitions": [
+      {
+        "name": "vueComponentMapWindow",
+        "title": "Vue Component Map",
+        "source": "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"
+      }
+    ]
+  },
+  "dependencies": {
+    "@babel/parser": "^7.23.9",
+    "@babel/traverse": "^7.23.9",
+    "@vue/compiler-dom": "^3.4.15",
+    "@vue/compiler-sfc": "^3.4.15"
+  },
+  "devDependencies": {
+    "@types/babel__traverse": "^7.20.5",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.78.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  }
+}
